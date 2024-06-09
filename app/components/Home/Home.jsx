@@ -16,7 +16,7 @@ function Home({ updateFlag, id }) {
   return (
     <div className="overflow-x-hidden">
       <Toolbar updateFlag={updateFlag} id={id} />
-      <div className="flex pt-20">
+      <div className="flex pt-[84px]">
         <Sidebar />
         {/* MAKE A DYNAMIC TABLE WITH LABEL AND VALUE DROP AREA FOR EACH CELL */}
         <MainSection />

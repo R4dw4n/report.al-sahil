@@ -98,14 +98,14 @@ const Toolbar = ({ updateFlag, id }) => {
   };
 
   return (
-    <div className="fixed z-[100] top-0 flex w-full md:py-6 py-2 lg:px-16 md:px-8 px-4 items-center justify-between gap bg-[#eee] shadow-md">
+    <div className="fixed z-[100] top-0 flex w-full md:py-4 py-2 lg:px-16 md:px-8 px-4 items-center justify-between gap bg-[#eee] shadow-md">
       {/* logo */}
       <div className="flex justify-around items-center gap-6">
         <Link href="/">
           <Image
-            src="/next.svg"
-            width="170"
-            height="50"
+            src="/alsahil_logo.png"
+            width="65"
+            height="10"
             alt="alsahil-logo"
             className="max-h-full max-w-32 sm:max-w-44"
           />

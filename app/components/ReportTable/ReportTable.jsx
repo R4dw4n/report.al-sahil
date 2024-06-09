@@ -90,7 +90,7 @@ function ReportTable() {
       </div>
       {content.map((oneContent, i) => (
         <div className='w-full' key={i}>
-          <h1 style={{fontSize: '64px'}}>{oneContent.title}</h1>
+          <h1 style={{fontSize: '32px', textAlign: 'center'}}>{oneContent.title}</h1>
           <Table columns={reportCols[i]} dataSource={dataSource} pagination={false} style={{width: '100%'}}/>
         </div>
       ))}
