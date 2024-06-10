@@ -21,5 +21,6 @@
   "phone_number": "Phone Number",
   "password": "Password",
   "welcome": "Welcome",
-  "forgot_password": "Forgot password"
+  "forgot_password": "Forgot password",
+  "preview": "Preview"
 }

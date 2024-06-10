@@ -110,7 +110,7 @@ const Toolbar = ({ updateFlag, id }) => {
             className="max-h-full max-w-32 sm:max-w-44"
           />
         </Link>
-        <Link href={`/preview/${id}`}>PREVIEW</Link>
+        {id &&<Link href={`/preview/${id}`}>{t("preview")}</Link>}
         <button
           className="p-2 bg-[#d9d9d9] cursor-pointer rounded-md"
           onClick={() => dispatch(addGrid())}
