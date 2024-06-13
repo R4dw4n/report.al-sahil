@@ -31,8 +31,17 @@ export const contentSlice = createSlice({
     },
     setContentStyle: (state, action) => {
       state.content[action.payload.i].grid = state.content[action.payload.i].grid.map((item, ind) => {
-        if(ind === action.payload.index)
-          return { ...item, style: action.payload.style };
+        if(ind === action.payload.index) 
+          return { 
+            ...item,  
+            insideContent: {
+              ...item.insideContent,
+              [action.payload.section]: {
+                ...item.insideContent[action.payload.section],
+                style: action.payload.style,
+              }
+            }
+          };
         
         return { ...item }
       })

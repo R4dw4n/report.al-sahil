@@ -23,7 +23,7 @@ function Home({ updateFlag, id }) {
       </div>
       {isDragging &&
         <DropDiv
-          className="fixed w-24 h-12 bg-[#ff0000] bottom-0 left-1/2 rounded-t-[40px] text-white text-2xl flex justify-center items-center text-3xl opacity-70"
+          className="fixed w-24 h-12 bg-[#ff0000] bottom-0 left-1/2 rounded-t-[40px] text-white flex justify-center items-center text-3xl opacity-70"
           accept={['deleting']}
           headerArray={header}
           contentArray={content}

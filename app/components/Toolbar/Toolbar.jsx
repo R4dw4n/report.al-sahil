@@ -61,10 +61,16 @@ const Toolbar = ({ updateFlag, id }) => {
         })
       );
     } else if (!compareArrays(openFieldContent, [-1, -1])) {
+      let sectionMap = {
+        0: 'header',
+        1: 'value',
+        2: 'footer',
+      }
       dispatch(
         setContentStyle({
           i: openFieldContent[0],
           index: openFieldContent[1],
+          section: sectionMap[openFieldContent[2]],
           style: { ...openStyle },
         })
       );

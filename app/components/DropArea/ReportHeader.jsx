@@ -3,6 +3,9 @@ import DraggedDiv from "../Dragging/DraggedDiv";
 import UploadModal from "../uploadModal/UploadModal";
 
 export const compareArrays = (arr1, arr2) => {
+  if(arr1.length !== arr2.length)
+    return false;
+
   for (let i = 0; i < arr1.length; i++) {
     if (arr1[i] !== arr2[i]) return false;
   }
@@ -34,10 +37,10 @@ function ReportHeader(props) {
           <DraggedDiv
             className={
               compareArrays([props.i, index], props.swapOver)
-                ? `@container flex flex-col shrink h-full w-64 flex justify-center items-center ${
+                ? `@container flex flex-col shrink h-full w-64 justify-center items-center ${
                     translate[props.hovering]
                   }`
-                : `@container flex flex-col shrink h-full w-64 flex justify-center items-center`
+                : `@container flex flex-col shrink h-full w-64 justify-center items-center`
             }
             data={{ ...item, dropType: ["swap"], array: "header" + props.i }}
             key={index}

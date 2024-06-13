@@ -19,7 +19,7 @@ export const deleteFromArray = (i, index, data, setData) => {
 
 function DropDiv(props) {
   const { draggedData } = useSelector((state) => state.dragged);
-  const { isDragging } = useSelector((state) => state.dragged);
+  // const { isDragging } = useSelector((state) => state.dragged);
   const dispatch = useDispatch();
   const handleDrop = (e) => {
     console.log("dragged", draggedData, props.index, props.accept);
@@ -63,17 +63,24 @@ function DropDiv(props) {
         insideContent: {
           ...tmp?.insideContent,
           id_field: draggedData?.id_field ? draggedData?.id_field: tmp?.insideContent?.id_field? tmp?.insideContent?.id_field: '',
-          [props.section]: draggedData?.labelField ? draggedData?.labelField: draggedData?.value? draggedData?.value: '',
+          [props.section]: {
+            text: draggedData?.labelField ? draggedData?.labelField: draggedData?.value? draggedData?.value: '',
+          },
         },
       };
+      let sectionMap = {
+        'header': 0,
+        'value': 1,
+        'footer': 2,
+      }
       let newData = props.data[props.i].grid.map((item, ind) => {
         if (ind === props.index) return tmp;
         return item;
       });
       dispatch(props.setter({ i: props.i, data: [...newData] }));
       console.log("inside dropped", newData);
-      console.log("inside dropped in index", [props.i, props.index]);
-      if (props.setVisibleBox) props.setVisibleBox([props.i, props.index]);
+      console.log("inside dropped in index", [props.i, props.index, props.section]);
+      if (props.setVisibleBox) props.setVisibleBox([props.i, props.index, sectionMap[props.section]]);
       return null;
     } else if (draggedData.dropType.some((item) => item === "drop")) {
       // "i" is the index of the array, "index" is the index of the item in it's array.
