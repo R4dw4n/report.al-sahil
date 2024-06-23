@@ -1,7 +1,7 @@
 import axios from "axios";
 import { t } from "i18next";
 
-export const HOST = "http://192.168.1.4:8000";
+export const HOST = "http://192.168.1.27:8000";
 export const axiosInstance = () => {
   const header = {
     Accept: "application/json",

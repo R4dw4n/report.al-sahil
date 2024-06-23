@@ -20,9 +20,9 @@ export const reportServices = {
               ...oneGrid.grid.map((item, ind) => {
                 return {
                   field_id: item.insideContent?.id_field,
-                  nameLabel: item.insideContent?.header || '',
-                  nameField: item.insideContent?.value || '',
-                  footerType: item.insideContent?.footer || '',
+                  nameLabel: item.insideContent?.header?.text || '',
+                  nameField: item.insideContent?.value?.text || '',
+                  footerType: item.insideContent?.footer?.text || '',
                   index: item.index,
                   properties: [
                     ...Object.entries(item.style).map(([key, val]) => {
