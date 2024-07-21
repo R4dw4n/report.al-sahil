@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  footer: [[]],
+  footer: [{style: {}, arr: []} ],
 };
 
 export const footerSlice = createSlice({
@@ -12,10 +12,10 @@ export const footerSlice = createSlice({
       state.footer = [...action.payload];
     },
     pushFooter: (state, action) => {
-      state.footer[action.payload.i].push(action.payload.item);
+      state.footer[action.payload.i].arr.push(action.payload.item);
     },
     setFooter: (state, action) => {
-      state.footer[action.payload.i] = action.payload.data.map((item) => {
+      state.footer[action.payload.i].arr = action.payload.data.map((item) => {
         if(item?.fileList) {
           const x = {...item.fileList[0], status: 'done'}
           return {
@@ -27,21 +27,24 @@ export const footerSlice = createSlice({
       })
     },
     deleteFooter: (state, action) => {
-      state.footer[action.payload.i].splice(action.payload.index, 1);
-      state.footer[action.payload.i] = state.footer[action.payload.i].map((item, i) => {
+      state.footer[action.payload.i].arr.splice(action.payload.index, 1);
+      state.footer[action.payload.i].arr = state.footer[action.payload.i].arr.map((item, i) => {
         return { ...item, index: i };
       });
     },
     setFooterStyle: (state, action) => {
-      state.footer[action.payload.i] = state.footer[action.payload.i].map((item, ind) => {
+      state.footer[action.payload.i].arr = state.footer[action.payload.i].arr.map((item, ind) => {
         if(ind === action.payload.index)
           return { ...item, style: action.payload.style };
         
         return { ...item }
       })
     },
+    setAllFootersStyle: (state, action) => {
+      state.footer[action.payload.i].style = {...state.footer[action.payload.i].style , [action.payload.name]:action.payload.value }
+    },
   }
 });
 
-export const { pushFooter, setAllFooters, setFooter, deleteFooter, setFooterStyle } = footerSlice.actions;
+export const { pushFooter, setAllFooters, setFooter, deleteFooter, setFooterStyle , setAllFootersStyle } = footerSlice.actions;
 export default footerSlice.reducer;

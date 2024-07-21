@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import footer from "./footer";
 
 const initialState = {
-  content: [{grid: [], title: ""}],
+  content: [{ grid: [], title: "", style: {} }],
 };
 
 export const contentSlice = createSlice({
@@ -12,7 +13,7 @@ export const contentSlice = createSlice({
       state.content = [...action.payload];
     },
     addGrid: (state) => {
-      state.content.push({grid: [], title: ""});
+      state.content.push({ grid: [], title: "" });
     },
     setTitle: (state, action) => {
       state.content[action.payload.i].title = action.payload.title;
@@ -31,9 +32,25 @@ export const contentSlice = createSlice({
     },
     setContentStyle: (state, action) => {
       state.content[action.payload.i].grid = state.content[action.payload.i].grid.map((item, ind) => {
-        if(ind === action.payload.index) 
-          return { 
-            ...item,  
+        if (ind === action.payload.index) {
+          if (action.payload.section === 'footer') {
+            let newFooter = item.insideContent[action.payload.section].map((e, ind2) => {
+              if (ind2 === action.payload.ind) {
+                console.log('inside the edited ele', e)
+                return { ...e, style: action.payload.style };
+              }
+              return e;
+            });
+            return {
+              ...item,
+              insideContent: {
+                ...item.insideContent,
+                footer: [...newFooter],
+              },
+            };
+          }
+          return {
+            ...item,
             insideContent: {
               ...item.insideContent,
               [action.payload.section]: {
@@ -42,12 +59,47 @@ export const contentSlice = createSlice({
               }
             }
           };
-        
+        }
         return { ...item }
       })
+    },
+    setGridStyle: (state, action) => {
+      state.content[action.payload.i].style = { ...state.content[action.payload.i].style, [action.payload.name]: action.payload.value }
+    },
+    pushToFooterOfGrid: (state, action) => {
+      if (state.content[action.payload.i].grid[action.payload.index].insideContent?.footer !== undefined) {
+        let notFound = true;
+        state.content[action.payload.i].grid[action.payload.index].insideContent.footer.forEach(element => {
+          if (element.function === action.payload.function)
+            notFound = false
+        });
+
+        if (notFound) {
+          state.content[action.payload.i].grid[action.payload.index].insideContent.footer.push(action.payload)
+          notFound = true
+        }
+      }
+      else {
+        state.content[action.payload.i].grid[action.payload.index].insideContent = {
+          ...state.content[action.payload.i].grid[action.payload.index].insideContent,
+          footer: [action.payload]
+        }
+      }
+    },
+    deleteItemFromFooter: (state, action) => {
+      state.content[action.payload.i].grid[action.payload.index].insideContent.footer.splice(parseInt(action.payload.ind), 1);
+    },
+    editItemFromFooter: (state, action) => {
+      let newFooter = state.content[action.payload.i].grid[action.payload.index].insideContent.footer.map((item, ind) => {
+        if (ind === action.payload.ind) {
+          return { ...item, text: action.payload.text };
+        }
+        return item;
+      });
+      state.content[action.payload.i].grid[action.payload.index].insideContent.footer = [...newFooter]
     },
   }
 });
 
-export const { addGrid, setTitle, pushContent, setContent, setGrid, deleteContent, setContentStyle } = contentSlice.actions;
+export const { addGrid, setTitle, pushContent, setContent, setGrid, deleteContent, setContentStyle, setGridStyle, pushToFooterOfGrid, deleteItemFromFooter, editItemFromFooter } = contentSlice.actions;
 export default contentSlice.reducer;

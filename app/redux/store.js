@@ -5,6 +5,7 @@ import contentSlice from "./slices/content";
 import footerSlice from "./slices/footer";
 import reportDesign from "./slices/reportDesign";
 import openFieldSlice from "./slices/openField";
+import mainPageSlice from "./slices/main"
 export const store = () => {
   return configureStore({
     reducer: {
@@ -14,6 +15,8 @@ export const store = () => {
         content: contentSlice,
         footer: footerSlice,
         openField: openFieldSlice,
+        mainPage:mainPageSlice,
+        
     },
     middleware: getDefaultMiddleware => getDefaultMiddleware({
         serializableCheck: false
