@@ -104,7 +104,7 @@ function ReportContent(props) {
                 setter={props.setGrid}
                 index={index}
                 setVisibleBox={toggleInput}
-                className="flex items-center justify-center h-[33%] border-dotted border-2 border-[#ff0000]"
+                className="flex items-center justify-center h-[33%] border-dotted border-2 border-[#ff0000] z-30"
                 accept={["text"]}
                 onDoubleClick={() => toggleInput([props.i, index, 0])}
                 section={"header"}
@@ -127,7 +127,7 @@ function ReportContent(props) {
                   </>
                 ) : (
                   <p className="@[80px]:text-[16px] @[50px]:text-[12px] @[30px]:text-[8px]">
-                    COLUMN HEADER {index}
+                    TEXT {index}
                   </p>
                 )}
               </DropDiv>
@@ -147,7 +147,7 @@ function ReportContent(props) {
                   <h3 style={item?.insideContent?.value?.style}>{item.insideContent.value.text}</h3>
                 ) : (
                   <p className="@[80px]:text-[16px] @[50px]:text-[12px] @[30px]:text-[8px]">
-                    COLUMN VALUE {index}
+                    VALUES {index}
                   </p>
                 )}
               </DropDiv>
@@ -184,7 +184,7 @@ function ReportContent(props) {
                   </>
                 ) : (
                   <p className="@[80px]:text-[16px] @[50px]:text-[12px] @[30px]:text-[8px]">
-                    COLUMN FOOTER {index}
+                    TEXT, FUNCTION {index}
                   </p>
                 )}
               </DropDiv>

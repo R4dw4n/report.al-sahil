@@ -71,6 +71,7 @@ function MainSection() {
   const [input, toggleInput] = useState([-1, -1]);
   const [title, toggleTitle] = useState(-1);
   const [footerInput, toggleFooterInput] = useState([-1, -1]);
+  
   const handleShowInput = (e, i, index, data, setData) => {
     console.log("showing input...");
     toggleInput([-1, -1]);
@@ -101,6 +102,7 @@ function MainSection() {
   useEffect(() => {
     if (!compareArrays(input, [-1, -1])) {
       if (inputRef.current) inputRef.current.focus();
+      console.log(header[input[0]][input[1]], 'the open item')
       dispatch(setOpenFieldHeader([...input]));
       dispatch(setStyleObj({ ...header[input[0]][input[1]].style }));
     }

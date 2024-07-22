@@ -1,9 +1,10 @@
 'use client'
 import { pushCol, emptyCols, addTableCols } from '@/app/redux/slices/reportDesign';
-import { Table } from 'antd';
+import { FloatButton, Table } from 'antd';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import HeaderItem from './HeaderItem';
+import { AiFillPrinter } from "react-icons/ai"
 
 // Fetch the specific report design (array of header content and footer) and showcase it then print it
 function ReportTable() {
@@ -78,6 +79,10 @@ function ReportTable() {
     })
   }, [content]);
 
+  const handlePrint = () => {
+    window.print();
+  }
+
   return (
     <div className='p-4 h-screen'>
       <div className='flex items-center justify-around mb-4 font-bold mt-24'>
@@ -101,6 +106,11 @@ function ReportTable() {
           ))
         })}
       </div>
+      <FloatButton
+        onClick={handlePrint} className="print:hidden" type='primary'
+        tooltip={<div>{t('print')}</div>}
+        icon={<AiFillPrinter/>}
+      />
     </div>
   )
 }

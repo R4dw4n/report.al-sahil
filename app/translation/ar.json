@@ -22,5 +22,7 @@
   "password": "كلمة المرور",
   "welcome": "اهلاً وسهلاً",
   "forgot_password": "هل نسيت كلمةالسر",
-  "preview": "اظهار"
+  "preview": "اظهار",
+  "values": "القيم",
+  "print": "طباعة"
 }

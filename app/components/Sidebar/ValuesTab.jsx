@@ -3,11 +3,13 @@ import { reportServices } from "@/app/api/services/reportServices";
 import { setSelectedTables } from "@/app/redux/slices/reportDesign";
 import { Checkbox } from "antd";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import DraggedDiv from "../Dragging/DraggedDiv";
 
 function ValuesTab() {
   //GET THE VALS FROM BACKEND (FIELDNAMES)
+  const { t } = useTranslation();
   const { selectedTables } = useSelector(state => state.report);
 
   const [tables, setTables] = useState([]);
@@ -35,13 +37,15 @@ function ValuesTab() {
       .catch((err) => {
         console.log(err);
       });
-
     }, []);
     
     console.log(tables);
     console.log(fieldsData);
   return (
     <div className="w-full">
+      <div className="px-6 py-2">
+        <h2 className="text-3xl">{t("values")}</h2>
+      </div>
       <div>
         <Checkbox.Group options={tables} onChange={handleChange} value={selectedTables}></Checkbox.Group>
       </div>

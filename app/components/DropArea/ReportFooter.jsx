@@ -29,10 +29,10 @@ function ReportFooter(props) {
           <DraggedDiv
             className={
               compareArrays([props.i, index], props.swapOver)
-                ? `@container flex flex-col shrink h-full w-64 flex justify-center items-center ${
+                ? `@container flex flex-col shrink h-full w-64 justify-center items-center ${
                     translate[props.hovering]
                   }`
-                : `@container flex flex-col shrink h-full w-64 flex justify-center items-center`
+                : `@container flex flex-col shrink h-full w-64 justify-center items-center`
             }
             data={{ ...item, dropType: ["swap"], array: 'footer' + props.i }}
             key={index}

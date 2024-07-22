@@ -22,5 +22,7 @@
   "password": "Password",
   "welcome": "Welcome",
   "forgot_password": "Forgot password",
-  "preview": "Preview"
+  "preview": "Preview",
+  "values": "Values",
+  "print": "Print"
 }
