@@ -7,6 +7,7 @@ const initialState = {
   openStyle: {
     fontSize: '',
     color: '',
+    background:'',
   },
 };
 
@@ -31,6 +32,7 @@ export const openFieldSlice = createSlice({
     },
     clearStyle: (state) => {
       state.openStyle = Object.assign(state.openStyle, {});
+      console.log("hello" , state.openStyle);
     },
   },
 });

@@ -38,7 +38,7 @@ const UploadModal = (props) => {
   const handleChange = (newFileList, file, dispatch) => {
     setFileList([...newFileList]);
     const data = [...props.data];
-    const tmpData = [...data[props.i]];
+    const tmpData = [...data[props.i].arr];
     let tmp = { ...tmpData[props.index] };
     console.log('file', file);
     if (file.status === 'removed') {

@@ -4,6 +4,7 @@ import { IoText } from "react-icons/io5";
 import { FiColumns } from "react-icons/fi";
 import { TbMathFunction, TbSum, TbBracketsAngle, TbMathMax, TbMathMin } from "react-icons/tb";
 
+
 export const toolbarItems = [
   {
     label: "images",
@@ -20,8 +21,9 @@ export const toolbarItems = [
     dropType: ['inside_object', 'drop'],
     insideContent: {},
     style: {
-      fontSize: '16px',
+      fontSize: "16px",
       color: '#000',
+      background: "00000000",
     },
   },
   {
@@ -33,6 +35,7 @@ export const toolbarItems = [
     style: {
       fontSize: '16px',
       color: '#000',
+      background: "00000000",
     },
   },
   {
@@ -44,6 +47,7 @@ export const toolbarItems = [
     style: {
       fontSize: '16px',
       color: '#000',
+      background: "00000000",
     },
   },
   {
@@ -54,45 +58,53 @@ export const toolbarItems = [
       {
         label: 'SUM',
         icon: <TbSum />,
-        value: 'SUM',
+        value: '',
         type: 'functions',
+        function:"SUM",
         dropType: ['inside_object'],
         style: {
           fontSize: '16px',
           color: '#000',
+          background: "00000000",
         },
       },
       {
         label: 'AVERAGE',
         icon: <TbBracketsAngle />,
-        value: 'AVERAGE',
+        value: '',
+        function:"AVERAGE",
         type: 'functions',
         dropType: ['inside_object'],
         style: {
           fontSize: '16px',
           color: '#000',
+          background: "00000000",
         },
       },
       {
         label: 'MAX',
         icon: <TbMathMax />,
-        value: 'MAX',
+        value: '',
+        function:'MAX',
         type: 'functions',
         dropType: ['inside_object'],
         style: {
           fontSize: '16px',
           color: '#000',
+          background: "00000000",
         },
       },
       {
         label: 'MIN',
         icon: <TbMathMin />,
-        value: 'MIN',
+        value: '',
+        function:'MIN',
         type: 'functions',
         dropType: ['inside_object'],
         style: {
           fontSize: '16px',
           color: '#000',
+          background: "00000000",
         },
       },
     ],
