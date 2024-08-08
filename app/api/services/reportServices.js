@@ -114,6 +114,7 @@ export const reportServices = {
     return axiosInstance().get(`/showReportsWithData/${id}`)
   },
   addImage: (data) => {
+    console.log('/addImage', data)
     return axiosInstance().postForm('/addImage', data)
   },
   removeImage: (data) => {

@@ -35,11 +35,6 @@ function ReportContent(props) {
     // console.log("unhover", props.hovering);
   };
 
-  // //CELL HEADER INPUT
-  // const [input, toggleInput] = useState([-1, -1]);
-  // //CELL FOOTER INPUT
-  // const [footerInput, toggleFooterInput] = useState([-1, -1]);
-  // determine wich footerCell is hovering
   const [hoveringInd, setHoveringInd] = useState(-1)
   const handleShowInput = (e, i, index, key, ind) => {
     let tmp = props.content[i].grid[index];
@@ -113,6 +108,7 @@ function ReportContent(props) {
   return (
     <div className="h-full flex flex-wrap" >
       {props.content[props.i].grid.map((item, index) => {
+      
         return (
           <DraggedDiv
             className={
@@ -156,7 +152,7 @@ function ReportContent(props) {
                     props.toggleHeaderInput([-1, -1])
                   }}
                   section={"header"}
-                  array={"content" + props.i}
+                  array={"content" + props.i}   
                   className='h-full flex items-center justify-center relative'
                 >
                   {item.insideContent?.header != undefined ? (
@@ -167,13 +163,13 @@ function ReportContent(props) {
                             defaultValue={item.insideContent?.header?.text}
                             ref={inputRef}
                             className={`w-full h-full  m-auto block outline-0 px-[12px] border-solid border border-[#89979b] rounded text[#21313c] transition-[border-color] duration-150 ease-in-out hover:shadow-[#e7eeec_0_0_0_3px] background-transparent`}
-                            style={openStyle}
+                            style={item.insideContent?.header.style}
                             onBlur={(e) => {
                               e.stopPropagation();
                               handleShowInput(e, props.i, index, "header")
                             }}
                           />
-                          <ChangeStyleCard from="content" toggleInput={props.toggleContentInput} toggleFooterInput={props.toggleFooterContentInput} />
+                          <ChangeStyleCard from="content 1" section='header' toggleInput={props.toggleContentInput} toggleFooterInput={props.toggleFooterContentInput} />
                         </div>
                       ) : (
                         <h3 className={` h-full w-full flex justify-center items-center  text-center`} style={item?.insideContent?.header?.style}>{item.insideContent.header.text}</h3>
@@ -220,7 +216,7 @@ function ReportContent(props) {
                     <>
                       {compareArrays(props.contentInput, [props.i, index, 1]) &&
                         <>
-                          <ChangeStyleCard from="content" toggleInput={props.toggleContentInput} toggleFooterInput={props.toggleFooterContentInput} />
+                          <ChangeStyleCard from="content 2" section='value' toggleInput={props.toggleContentInput} toggleFooterInput={props.toggleFooterContentInput} />
                         </>
                       }
                       < h3 className={` h-full w-full flex justify-center items-center  text-center`} style={item?.insideContent?.value?.style}>{item.insideContent.value.text}</h3>
@@ -286,13 +282,13 @@ function ReportContent(props) {
                               <input
                                 defaultValue={foot?.text}
                                 ref={footerInputRef}
-                                style={openStyle}
+                                style={foot.style}
                                 className={`w-full h-full m-auto block outline-0 px-[12px] border-solid border border-[#89979b] rounded text[#21313c] transition-[border-color] duration-150 ease-in-out hover:shadow-[#e7eeec_0_0_0_3px]`}
                                 onBlur={(e) =>
                                   handleShowInput(e, props.i, index, "footer", ind)
                                 }
                               />
-                              <ChangeStyleCard from="content" ind={ind} toggleInput={props.toggleContentInput} toggleFooterInput={props.toggleFooterContentInput} small={1} maxFont={22} />
+                              <ChangeStyleCard from="content 3" ind={ind} toggleInput={props.toggleContentInput} toggleFooterInput={props.toggleFooterContentInput} small={1} maxFont={22} />
                             </div>
                           ) :
                             (<div className=" h-full text-center flex-col gap-1 justify-center items-center " style={foot?.style} >

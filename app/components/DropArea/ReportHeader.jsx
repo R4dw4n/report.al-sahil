@@ -58,7 +58,7 @@ function ReportHeader(props) {
                   <input
                     defaultValue={item?.value}
                     ref={props.inputRef}
-                    style={openStyle}
+                    style={item.style}
                     className={`w-1/2 h-full  mx-auto block outline-0 px-[12px] border-solid border border-[#89979b] rounded text[#21313c] transition-[border-color] duration-150 ease-in-out hover:shadow-[#e7eeec_0_0_0_3px]`}
                     onBlur={(e) => {
                       e.stopPropagation();

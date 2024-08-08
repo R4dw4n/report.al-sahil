@@ -44,6 +44,7 @@ export const contentSlice = createSlice({
       });
     },
     setContentStyle: (state, action) => {
+      console.log(action.payload)
       state.content[action.payload.i].grid = state.content[action.payload.i].grid.map((item, ind) => {
         if (ind === action.payload.index) {
           if (action.payload.section === 'footer') {

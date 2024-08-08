@@ -62,7 +62,7 @@ function ValuesTab() {
                       labelField: item.fieldsLabel[ind],
                       type: 'value',
                       dropType: ["inside_object"],
-                      style: { fontSize: '16px', color: "#000", background: "#00000000" }
+                      style: { fontSize: '16', color: "#000", background: "#00000000" }
                     }}
                   >
                     <h3 className="text-xs">{item.fieldsLabel[ind]}</h3>

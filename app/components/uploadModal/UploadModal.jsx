@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Image, Upload } from "antd";
 import { useDispatch } from "react-redux";
@@ -18,7 +18,6 @@ const UploadModal = (props) => {
 
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
-
   const [fileList, setFileList] = useState(
     props.data[props.i].arr[props.index]?.image_path ? [{
       uid: -10,
@@ -28,6 +27,7 @@ const UploadModal = (props) => {
     }] : []
   );
 
+  // console.log(props.data[props.index].arr[props.i])
   const handlePreview = async (file) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
@@ -55,7 +55,7 @@ const UploadModal = (props) => {
     }
     else {
       console.log('adding', file.originFileObj)
-      reportServices.addImage({image: file.originFileObj})
+      reportServices.addImage({ image: file.originFileObj })
         .then(res => {
           tmp = { ...tmp, image_path: res.data.data };
           let newData = tmpData.map((item, ind) => {
