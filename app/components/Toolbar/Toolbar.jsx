@@ -7,7 +7,7 @@ import { toolbarItems } from "./ToolbarData";
 import { useDispatch, useSelector } from "react-redux";
 import { addGrid } from "@/app/redux/slices/content";
 import { Input } from "antd";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
 import { reportServices } from "@/app/api/services/reportServices";
 import { setReportName } from "@/app/redux/slices/reportDesign";
 import { loginService } from "@/app/api/services/loginService";
@@ -21,41 +21,54 @@ const Toolbar = ({ updateFlag, id }) => {
   const { header } = useSelector((state) => state.header);
   const { content } = useSelector((state) => state.content);
   const { footer } = useSelector((state) => state.footer);
-  const { selectedTables } = useSelector(state => state.report);
-  const { reportName } = useSelector(state => state.report);
-  const { mainPage } = useSelector(state => state.mainPage)
+  const { selectedTables } = useSelector((state) => state.report);
+  const { reportName } = useSelector((state) => state.report);
+  const { mainPage } = useSelector((state) => state.mainPage);
 
   const router = useRouter();
   const handleLogout = () => {
-    loginService.logout()
-      .then(res => {
-        localStorage.removeItem("token");
-        return router.push('/login')
-      })
-  }
-
+    loginService.logout().then((res) => {
+      localStorage.removeItem("token");
+      return router.push("/login");
+    });
+  };
 
   const saveReport = () => {
-    reportServices.storeAll(
-      reportServices.convertReportFromFrontToBack(
-        reportName,
-        [...selectedTables],
-        [...header],
-        [...content],
-        [...footer],
-        0, updateFlag ? 1 : 0,
-        id,
-      )
-    );
+    if (updateFlag) {
+      reportServices.updateAll(
+        reportServices.convertReportFromFrontToBack(
+          reportName,
+          [...selectedTables],
+          [...header],
+          [...content],
+          [...footer],
+          0,
+          id
+        )
+      );
+    } else {
+      reportServices.storeAll(
+        reportServices.convertReportFromFrontToBack(
+          reportName,
+          [...selectedTables],
+          [...header],
+          [...content],
+          [...footer],
+          0,
+          id
+        )
+      );
+    }
   };
 
   const decideClassName = (item) => {
     if (mainPage.availableOpers.length !== 0)
       if (mainPage.availableOpers.some((e) => e === item))
-        return "p-2 flex justify-center items-center gap-4 shadow-lg rounded-md transition-all duration-200  scale-[110%] bg-[#c8c8c8]"
-      else return "p-2 flex justify-center items-center gap-4 shadow-md rounded-md transition-all duration-200  opacity-[8%]"
-    return "p-2 flex justify-center items-center gap-4 shadow-md rounded-md transition-all duration-200  hover:bg-[#c8c8c8]"
-  }
+        return "p-2 flex justify-center items-center gap-4 shadow-lg rounded-md transition-all duration-200  scale-[110%] bg-[#c8c8c8]";
+      else
+        return "p-2 flex justify-center items-center gap-4 shadow-md rounded-md transition-all duration-200  opacity-[8%]";
+    return "p-2 flex justify-center items-center gap-4 shadow-md rounded-md transition-all duration-200  hover:bg-[#c8c8c8]";
+  };
 
   return (
     <div className="fixed z-[100] top-0 flex w-full md:py-4 py-2 lg:px-16 md:px-8 px-4 items-center justify-between gap bg-[#eee] shadow-md">
@@ -102,7 +115,12 @@ const Toolbar = ({ updateFlag, id }) => {
       {/* buttons */}
       <div className="flex items-center gap-8">
         <div>
-          <Input placeholder={t("report_name")} value={reportName} className="w-64" onChange={(e) => dispatch(setReportName(e.target.value))} />
+          <Input
+            placeholder={t("report_name")}
+            value={reportName}
+            className="w-64"
+            onChange={(e) => dispatch(setReportName(e.target.value))}
+          />
         </div>
         <ul className="flex gap-4">
           {toolbarItems.map((item, ind) => {
@@ -117,7 +135,7 @@ const Toolbar = ({ updateFlag, id }) => {
                   <div
                     title={t(item.label)}
                     className={decideClassName(item.label)}
-                  // "p-2 flex justify-center items-center gap-4 shadow-md rounded-md transition-all duration-200  hover:bg-[#999]"
+                    // "p-2 flex justify-center items-center gap-4 shadow-md rounded-md transition-all duration-200  hover:bg-[#999]"
                   >
                     {item.icon}
                   </div>
@@ -156,7 +174,10 @@ const Toolbar = ({ updateFlag, id }) => {
               );
           })}
         </ul>
-        <button className="p-2 bg-[#d9d9d9] cursor-pointer rounded-md" onClick={handleLogout}>
+        <button
+          className="p-2 bg-[#d9d9d9] cursor-pointer rounded-md"
+          onClick={handleLogout}
+        >
           {t("logout")}
         </button>
       </div>

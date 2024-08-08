@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import footer from "./footer";
 
 const initialState = {
   content: [{ grid: [], title: "", style: {} }],
@@ -17,6 +16,20 @@ export const contentSlice = createSlice({
     },
     setTitle: (state, action) => {
       state.content[action.payload.i].title = action.payload.title;
+    },
+    setGridId: (state, action) => {
+      state.content[action.payload.i].id = action.payload.id;
+    },
+    setCellId: (state, action) => {
+      state.content[action.payload.i].grid = state.content[action.payload.i].grid.map((item, ind) => {
+        if (ind === action.payload.ind) {
+          return {
+            ...item,
+            id: action.payload.id,
+          };
+        }
+        return { ...item };
+      })
     },
     pushContent: (state, action) => {
       state.content[action.payload.i].grid.push(action.payload.item);
@@ -36,7 +49,6 @@ export const contentSlice = createSlice({
           if (action.payload.section === 'footer') {
             let newFooter = item.insideContent[action.payload.section].map((e, ind2) => {
               if (ind2 === action.payload.ind) {
-                console.log('inside the edited ele', e)
                 return { ...e, style: action.payload.style };
               }
               return e;
@@ -101,5 +113,5 @@ export const contentSlice = createSlice({
   }
 });
 
-export const { addGrid, setTitle, pushContent, setContent, setGrid, deleteContent, setContentStyle, setGridStyle, pushToFooterOfGrid, deleteItemFromFooter, editItemFromFooter } = contentSlice.actions;
+export const { addGrid, setTitle, pushContent, setContent, setGrid, setGridId, setCellId, deleteContent, setContentStyle, setGridStyle, pushToFooterOfGrid, deleteItemFromFooter, editItemFromFooter } = contentSlice.actions;
 export default contentSlice.reducer;

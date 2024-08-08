@@ -10,6 +10,7 @@ import { clearValidOpers, setValidOpers } from "../../redux/slices/main"
 import { TiDelete } from "react-icons/ti";
 import { deleteItemFromFooter } from "@/app/redux/slices/content";
 import { editItemFromFooter } from "../../redux/slices/content";
+import { TbBracketsAngle, TbMathMax, TbMathMin, TbSum } from "react-icons/tb";
 
 const translate = {
   0: "",
@@ -84,9 +85,33 @@ function ReportContent(props) {
   }, [props.footerContentInput]);
 
   const { openStyle } = useSelector((state) => state.openField);
+  const functionIcons = [
+    {
+      label: 'SUM',
+      icon: <TbSum />,
+    },
+    {
+      label: 'AVERAGE',
+      icon: <TbBracketsAngle />,
+    },
+    {
+      label: 'MAX',
+      icon: <TbMathMax />,
+    },
+    {
+      label: 'MIN',
+      icon: <TbMathMin />,
+    },
+  ];
+  const getFunctionIcon = (functionName) => {
+    const match = functionIcons.find(item => functionName === item.label);
+    if(match != undefined)
+      return (match.icon);
+    return <></>
+  }
 
   return (
-    <div className="h-full flex flex-wrap " >
+    <div className="h-full flex flex-wrap" >
       {props.content[props.i].grid.map((item, index) => {
         return (
           <DraggedDiv
@@ -94,7 +119,7 @@ function ReportContent(props) {
               compareArrays(props.swapOver, [props.i, index])
                 ? `@container flex flex-col shrink h-full w-[280px] flex-1  ${translate[props.hovering]
                 }`
-                : `@container flex flex-col shrink h-full w-[280px] flex-1  `
+                : `@container flex flex-col shrink h-full w-[280px] flex-1`
             }
             data={{ ...item, dropType: ["swap"], array: "content" + props.i }}
             key={index}
@@ -230,7 +255,7 @@ function ReportContent(props) {
                   className='relative h-full w-full flex cursor-auto'
                 >
                   {item.insideContent?.footer != undefined
-                    ? item.insideContent?.footer.map((foot, ind) => {
+                    ? (item.insideContent?.footer.map((foot, ind) => {
                       return (
                         <div key={ind} className=" border border-red-300 flex-1 cursor-pointer relative"
                           onDoubleClick={(e) => {
@@ -255,7 +280,7 @@ function ReportContent(props) {
                                   deleteItemFromFooter({ ind: ind, i: props.i, index: index })
                                 )
                               }} ><TiDelete /></div>}
-                          <span className="w-full h-full text-5xl flex justify-center items-center text-gray-300 opacity-50 absolute bottom-0 left-0">{foot?.icon}</span>
+                          <span className="w-full h-full text-5xl flex justify-center items-center text-gray-300 opacity-50 absolute bottom-0 left-0">{getFunctionIcon(foot?.function)}</span>
                           {compareArrays(props.footerContentInput, [props.i, index, 2, ind]) ? (
                             <div className="relative text-center w-full h-full">
                               <input
@@ -279,7 +304,7 @@ function ReportContent(props) {
                             )}
                         </div>
                       )
-                    })
+                    }))
                     : <p className="@[80px]:text-[16px] @[50px]:text-[12px] w-full flex items-center justify-center @[30px]:text-[8px] cursor-auto">
                       COLUMN FOOTER {index}
                     </p>

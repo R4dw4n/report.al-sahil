@@ -20,10 +20,10 @@ const UploadModal = (props) => {
   const [previewImage, setPreviewImage] = useState("");
 
   const [fileList, setFileList] = useState(
-    props.data[props.i][props.index]?.image_path ? [{
+    props.data[props.i].arr[props.index]?.image_path ? [{
       uid: -10,
-      url: HOST + "/storage/" + props.data[props.i][props.index]?.image_path,
-      thumbUrl: HOST + "/storage/" + props.data[props.i][props.index]?.image_path,
+      url: HOST + "/storage/" + props.data[props.i].arr[props.index]?.image_path,
+      thumbUrl: HOST + "/storage/" + props.data[props.i].arr[props.index]?.image_path,
       status: 'done',
     }] : []
   );

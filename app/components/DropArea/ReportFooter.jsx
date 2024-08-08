@@ -72,8 +72,6 @@ function ReportFooter(props) {
               <UploadModal data={props.footer} setter={props.setFooter} i={props.i} index={index} />
             ) : <p>NOTHING</p>
             }
-
-
           </DraggedDiv>
         );
       })}

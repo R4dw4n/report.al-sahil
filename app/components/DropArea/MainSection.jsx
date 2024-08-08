@@ -104,6 +104,10 @@ function MainSection() {
     }
   }, [title]);
 
+  useEffect(() => {
+    console.log(header);
+  }, [header])
+
   const inputRef = useRef(null);
   const footerInputRef = useRef(null);
   useEffect(() => {
@@ -145,7 +149,7 @@ function MainSection() {
               setter={pushHeader}
               toggleContentInput={toggleContentInput}
               toggleFooterContentInput={toggleFooterContentInput}
-               toggleFooterInput={toggleFooterInput}
+              toggleFooterInput={toggleFooterInput}
               i={i}
               swapElements={() =>
                 handleSwap(header, setHeader, headerCurr, headerSwapOver, i)

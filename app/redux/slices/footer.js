@@ -43,8 +43,15 @@ export const footerSlice = createSlice({
     setAllFootersStyle: (state, action) => {
       state.footer[action.payload.i].style = {...state.footer[action.payload.i].style , [action.payload.name]:action.payload.value }
     },
+    setFooterId: (state, action) => {
+      state.footer[action.payload.i].arr = state.footer[action.payload.i].arr.map((item, ind) => {
+        if (ind === action.payload.index)
+          return { ...item, id: action.payload.id };
+        return { ...item }
+      })
+    }
   }
 });
 
-export const { pushFooter, setAllFooters, setFooter, deleteFooter, setFooterStyle , setAllFootersStyle } = footerSlice.actions;
+export const { pushFooter, setAllFooters, setFooter, deleteFooter, setFooterStyle , setAllFootersStyle, setFooterId } = footerSlice.actions;
 export default footerSlice.reducer;
