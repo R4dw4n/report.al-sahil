@@ -21,7 +21,7 @@ export const toolbarItems = [
     dropType: ['inside_object', 'drop'],
     insideContent: {},
     style: {
-      fontSize: "16px",
+      fontSize: "16",
       color: '#000',
       background: "00000000",
     },
@@ -33,7 +33,7 @@ export const toolbarItems = [
     dropType: ['drop'],
     insideContent: {},
     style: {
-      fontSize: '16px',
+      fontSize: '16',
       color: '#000',
       background: "00000000",
     },
@@ -45,7 +45,7 @@ export const toolbarItems = [
     value: 'DATE',
     dropType: ['drop'],
     style: {
-      fontSize: '16px',
+      fontSize: '16',
       color: '#000',
       background: "00000000",
     },
@@ -63,7 +63,7 @@ export const toolbarItems = [
         function:"SUM",
         dropType: ['inside_object'],
         style: {
-          fontSize: '16px',
+          fontSize: '16',
           color: '#000',
           background: "00000000",
         },
@@ -76,7 +76,7 @@ export const toolbarItems = [
         type: 'functions',
         dropType: ['inside_object'],
         style: {
-          fontSize: '16px',
+          fontSize: '16',
           color: '#000',
           background: "00000000",
         },
@@ -89,7 +89,7 @@ export const toolbarItems = [
         type: 'functions',
         dropType: ['inside_object'],
         style: {
-          fontSize: '16px',
+          fontSize: '16',
           color: '#000',
           background: "00000000",
         },
@@ -102,7 +102,7 @@ export const toolbarItems = [
         type: 'functions',
         dropType: ['inside_object'],
         style: {
-          fontSize: '16px',
+          fontSize: '16',
           color: '#000',
           background: "00000000",
         },

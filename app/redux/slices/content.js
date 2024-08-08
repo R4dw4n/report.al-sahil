@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import footer from "./footer";
-
 const initialState = {
   content: [{ grid: [], title: "", style: {} }],
 };
@@ -31,6 +29,7 @@ export const contentSlice = createSlice({
       });
     },
     setContentStyle: (state, action) => {
+      console.log(action.payload)
       state.content[action.payload.i].grid = state.content[action.payload.i].grid.map((item, ind) => {
         if (ind === action.payload.index) {
           if (action.payload.section === 'footer') {
@@ -103,3 +102,4 @@ export const contentSlice = createSlice({
 
 export const { addGrid, setTitle, pushContent, setContent, setGrid, deleteContent, setContentStyle, setGridStyle, pushToFooterOfGrid, deleteItemFromFooter, editItemFromFooter } = contentSlice.actions;
 export default contentSlice.reducer;
+

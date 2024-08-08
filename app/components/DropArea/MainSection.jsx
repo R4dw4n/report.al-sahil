@@ -22,6 +22,10 @@ function MainSection() {
   const { content } = useSelector((state) => state.content);
   const { footer } = useSelector((state) => state.footer);
 
+
+  useEffect(() => {
+    console.log(header)
+  }, [header]);
   //  console.log(content[0]?.grid[0]?.insideContent?.footer)
 
   //REPORT HEADER STATES
@@ -42,7 +46,7 @@ function MainSection() {
     console.log("swapping...", curr, swapOver);
     let tmpContent = [...data[i].arr],
       x = { ...tmpContent[curr[1]] };
-
+      console.log(tmpContent)
     tmpContent[curr[1]] = { ...tmpContent[swapOver[1]] };
     tmpContent[swapOver[1]] = { ...x };
 

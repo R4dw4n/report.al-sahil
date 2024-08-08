@@ -21,20 +21,18 @@ function DropDiv(props) {
   const { openStyle } = useSelector((state) => state.openField);
   const { draggedData } = useSelector((state) => state.dragged);
 
-
-
   // const { isDragging } = useSelector((state) => state.dragged);
   const dispatch = useDispatch();
   const handleDrop = (e) => {
     dispatch(setIsDragging(false));
-    
-    if (props?.array?.startsWith("header") ) {
-      props.toggleFooterInput([-1,-1])
+
+    if (props?.array?.startsWith("header")) {
+      props.toggleFooterInput([-1, -1])
       props.toggleFooterContentInput([-1, -1])
       props.toggleContentInput([-1, -1])
     }
-    if( props?.array?.startsWith("footer")) {
-      props.toggleInput([-1,-1])
+    if (props?.array?.startsWith("footer")) {
+      props.toggleInput([-1, -1])
       props.toggleFooterContentInput([-1, -1])
       props.toggleContentInput([-1, -1])
     }
@@ -120,8 +118,7 @@ function DropDiv(props) {
           return item;
         });
         dispatch(props.setter({ i: props.i, data: [...newData] }));
-        console.log("inside dropped", newData);
-        console.log("inside dropped in index", [props.i, props.index, props.section]);
+
         if (props.setVisibleBox) props.setVisibleBox([props.i, props.index, sectionMap[props.section]]);
         return null;
       }
@@ -151,6 +148,7 @@ function DropDiv(props) {
           })
         );
       } else if (draggedData.type === "images") {
+        // console.log("test" , props.i , props.data[props.i].arr.length  )
         dispatch(
           props.setter({
             i: props.i,
@@ -163,7 +161,6 @@ function DropDiv(props) {
           })
         );
       }
-      console.log(props.data);
     }
   };
   return (
