@@ -1,3 +1,4 @@
+import { HOST } from '@/app/api/axiosInstance'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { getBase64 } from '../uploadModal/UploadModal'
@@ -10,13 +11,7 @@ function HeaderItem({ item }) {
     return <h1 style={item?.style}>{item.value}</h1>
   }
   else if(item.type === 'images') {
-    const [src, setSrc] = useState('');
-    useEffect(() => {
-      handleSrc(item.fileList[0].originFileObj).then((result) => setSrc(result));
-    }, [])
-    
-    if(src)
-      return <Image alt='image' src={src} width={150} height={150} />
+      return <Image alt='image' src={HOST + "/storage/" + item?.image_path} width={150} height={150} />
   }
   else if(item.type == 'date') {
     const date = new Date().toDateString();

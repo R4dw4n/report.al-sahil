@@ -27,6 +27,19 @@ const UploadModal = (props) => {
     }] : []
   );
 
+  useEffect(() => {
+    if(props.data[props.i].arr[props.index]?.image_path) {
+      setFileList([{
+        uid: -10,
+        url: HOST + "/storage/" + props.data[props.i].arr[props.index]?.image_path,
+        thumbUrl: HOST + "/storage/" + props.data[props.i].arr[props.index]?.image_path,
+        status: 'done',
+      }])
+    } else {
+      setFileList([]);
+    }
+  }, [props.data[props.i].arr[props.index]?.image_path])
+
   // console.log(props.data[props.index].arr[props.i])
   const handlePreview = async (file) => {
     if (!file.url && !file.preview) {

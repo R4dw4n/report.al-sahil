@@ -58,11 +58,11 @@ function ValuesTab() {
                     className="p-1 h-12 w-auto  cursor-pointer flex justify-center items-center bg-[#d9d9d9] font-semibold"
                     data={{
                       id_field: item.id,
-                      value: field,
+                      fieldValue: field,
                       labelField: item.fieldsLabel[ind],
                       type: 'value',
                       dropType: ["inside_object"],
-                      style: { fontSize: '16', color: "#000", background: "#00000000" }
+                      style: { fontSize: '16px', color: "#000", background: "#00000000" }
                     }}
                   >
                     <h3 className="text-xs">{item.fieldsLabel[ind]}</h3>

@@ -109,8 +109,8 @@ function MainSection() {
   }, [title]);
 
   useEffect(() => {
-    console.log(header);
-  }, [header])
+    console.log(content);
+  }, [content])
 
   const inputRef = useRef(null);
   const footerInputRef = useRef(null);
@@ -140,14 +140,14 @@ function MainSection() {
 
   const [changeStyle, setChangeStyle] = useState([-1, -1])
   return (
-    <div className="flex-1  h-full flex-col justify-center items-center  m-auto p-2 pt-12" style={mainPage.style} >
+    <div className="flex-1 h-full flex-col justify-center items-center  m-auto p-2 pt-12" style={mainPage.style} >
       {header.map((oneHead, i) => {
         return (
           <div key={i} onDoubleClick={() => { setChangeStyle([i, -1]) }} onMouseEnter={() => {
             dispatch(setValidOpers({ val: ["images", "text", "date"] }));
           }}
             onMouseLeave={() => dispatch(clearValidOpers())}
-            className="relative cursor-pointer" style={oneHead?.style} >
+            className="relative cursor-pointer w-[1100px]" style={oneHead?.style} >
             <DropDiv
               data={header}
               setter={pushHeader}
@@ -158,7 +158,7 @@ function MainSection() {
               swapElements={() =>
                 handleSwap(header, setHeader, headerCurr, headerSwapOver, i)
               }
-              className="w-full h-[125px] border-dotted border-2 border-[#333] my-2 flex justify-center items-center mb-6  "
+              className="w-full min-h-[125px] h-auto border-dotted border-2 border-[#333] my-2 flex justify-center items-center mb-6  "
               accept={["images", "text", "date"]}
               setVisibleBox={toggleInput}
               array={"header" + i}
@@ -324,13 +324,13 @@ function MainSection() {
             }}
             onMouseLeave={() => dispatch(clearValidOpers())}
 
-            className="relative cursor-pointer" style={oneFoot?.style} >
+            className="relative cursor-pointer w-[1100px]" style={oneFoot?.style} >
             <DropDiv
               key={i}
               i={i}
               data={footer}
               setter={pushFooter}
-              className="w-full h-[125px] border-dotted border-2 border-[#333] my-2 flex justify-center items-center mt-6"
+              className="w-full min-h-[125px] h-auto border-dotted border-2 border-[#333] my-2 flex justify-center items-center mt-6"
               swapElements={() =>
                 handleSwap(footer, setFooter, footerCurr, footerSwapOver, i)
               }

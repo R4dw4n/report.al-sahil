@@ -1,10 +1,11 @@
 import { axiosInstance } from "../axiosInstance"
 
 export const reportServices = {
-  convertReportFromFrontToBack: (name, tables, header, content, footer, deleteFlag, id) => {
+  convertReportFromFrontToBack: (name, tables, header, content, footer, updateFlag, deleteFlag, id) => {
     let report = {
       name: name,
       deleteReport: deleteFlag,
+      updateReport: updateFlag,
       frontProperties: {
         header: [...header],
         content: [...content],
@@ -15,16 +16,14 @@ export const reportServices = {
         ...content.map((oneGrid, i) => {
           return {
             name: oneGrid.title,
-            id: oneGrid?.id,
             celles: [
               ...oneGrid.grid.map((item, ind) => {
                 return {
                   field_id: item.insideContent?.id_field,
                   nameLabel: item.insideContent?.header?.text || '',
-                  nameField: item.insideContent?.value?.text || '',
+                  nameField: item.insideContent?.value?.fieldValue || '',
                   footerType: item.insideContent?.footer || [],
                   index: item.index,
-                  id: item?.id,
                   properties: [
                     ...Object.entries(item.style).map(([key, val]) => {
                       return {
@@ -53,7 +52,6 @@ export const reportServices = {
                 index: item.index,
                 type: 4,
                 location: 0,
-                id: item?.id,
               }
             }
             return {
@@ -61,7 +59,6 @@ export const reportServices = {
               index: item.index,
               type: item.type === 'text' ? 2 : item.type === 'date'? 3: 4,
               location: 0,
-              id: item?.id,
             }
           })
         ]
@@ -75,7 +72,6 @@ export const reportServices = {
                 index: item.index,
                 type: 4,
                 location: 1,
-                id: item?.id,
               }
             }
             return {
@@ -83,7 +79,6 @@ export const reportServices = {
               index: item.index,
               type: item.type === 'text' ? 2 : item.type === 'date'? 3: 4,
               location: 1,
-              id: item?.id,
             }
           })
         ]

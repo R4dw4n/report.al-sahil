@@ -32,8 +32,7 @@ function ReportFooter(props) {
   }, [props.input])
 
   return (
-    <>
-
+    <div className="flex h-full flex-wrap m-auto">
       {props.footer[props.i].arr.map((item, index) => {
         return (
           <DraggedDiv
@@ -56,7 +55,7 @@ function ReportFooter(props) {
                 <input
                   defaultValue={item?.value}
                   ref={props.inputRef}
-                  className={`w-1/2 h-full  m-auto block outline-0 px-[12px] border-solid border border-[#89979b] rounded text[#21313c] transition-[border-color] duration-150 ease-in-out hover:shadow-[#e7eeec_0_0_0_3px]`}
+                  className={`w-full h-24 m-auto block outline-0 px-[12px] border-solid border border-[#89979b] rounded text[#21313c] transition-[border-color] duration-150 ease-in-out hover:shadow-[#e7eeec_0_0_0_3px]`}
                   style={item.style}
                   onBlur={(e) => {
                     e.stopPropagation();
@@ -67,7 +66,7 @@ function ReportFooter(props) {
                 <ChangeStyleCard from="footer" toggleInput={props.toggleInput} />
               </div>
             ) : (item.type === "text" || item.type === "date") ? (
-              <h1 style={item?.style} className=" px-2 h-full flex justify-center text-center items-center">{item.value}</h1>
+              <h1 style={item?.style} className="px-2 h-24 flex justify-center text-center items-center">{item.value}</h1>
             ) : item.type === "images" ? (
               <UploadModal data={props.footer} setter={props.setFooter} i={props.i} index={index} />
             ) : <p>NOTHING</p>
@@ -75,7 +74,7 @@ function ReportFooter(props) {
           </DraggedDiv>
         );
       })}
-    </>
+    </div>
   );
 }
 

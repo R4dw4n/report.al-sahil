@@ -34,19 +34,6 @@ const Toolbar = ({ updateFlag, id }) => {
   };
 
   const saveReport = () => {
-    if (updateFlag) {
-      reportServices.updateAll(
-        reportServices.convertReportFromFrontToBack(
-          reportName,
-          [...selectedTables],
-          [...header],
-          [...content],
-          [...footer],
-          0,
-          id
-        )
-      );
-    } else {
       reportServices.storeAll(
         reportServices.convertReportFromFrontToBack(
           reportName,
@@ -54,11 +41,11 @@ const Toolbar = ({ updateFlag, id }) => {
           [...header],
           [...content],
           [...footer],
+          updateFlag ? 1: 0,
           0,
           id
         )
       );
-    }
   };
 
   const decideClassName = (item) => {

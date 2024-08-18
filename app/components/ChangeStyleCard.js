@@ -51,7 +51,8 @@ const ChangeStyleCard = (props) => {
                     style: { ...header[openFieldHeader[0]]?.arr[openFieldHeader[1]].style, ...editStyle },
                 })
             );
-            console.log(header[openFieldHeader[0]].arr[openFieldHeader[1]].style)
+            console.log(header[openFieldHeader[0]].arr[openFieldHeader[1]].style, 'header style')
+            console.log(editStyle, 'edit style')
         }
         else if (props.from === "footer" && !compareArrays(openFieldFooter, [-1, -1]))
             dispatch(
@@ -101,6 +102,8 @@ const ChangeStyleCard = (props) => {
 
 
     const fetchStyle = (prop) => {
+        if(props.from === "header" && prop === "fontSize")
+            console.log(header[openFieldHeader[0]]?.arr[openFieldHeader[1]]?.style[prop])
         if (props.from === 'header')
             return header[openFieldHeader[0]]?.arr[openFieldHeader[1]]?.style[prop]
         else if (props.from === 'footer')
@@ -164,14 +167,14 @@ const ChangeStyleCard = (props) => {
                         <InputNumber
                             className=
                             {(props.small)
-                                ? "w-[38px]  border-none  rounded-md "
-                                : "w-12  border-none  rounded-md "}
+                                ? "w-[38px] border-none  rounded-md "
+                                : "w-12 border-none  rounded-md "}
                             min={4}
                             max={props.maxFont ? props.maxFont : 40}
                             defaultValue={16}
-                            value={fetchStyle('fontSize')}
+                            value={parseInt(fetchStyle('fontSize')?.slice(0, -2))}
                             onChange={(val) => {
-                                setEditStyle({ fontSize: val })
+                                setEditStyle({ fontSize: val + 'px' })
                             }
                             }
                         />

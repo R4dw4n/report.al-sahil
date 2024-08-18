@@ -33,7 +33,7 @@ function ReportHeader(props) {
   const { openStyle } = useSelector((state) => state.openField);
 
   return (
-    <div className="flex gap-4 h-full" >
+    <div className="flex h-full flex-wrap m-auto">
       {props.header[props.i].arr.map((item, index) => {
         return (
           <DraggedDiv
@@ -54,12 +54,12 @@ function ReportHeader(props) {
             {item.type === "text"
               && compareArrays(props.input, [props.i, index])
               ? (
-                <div className="relative text-center w-full h-full">
+                <div className="relative text-center w-full h-24">
                   <input
                     defaultValue={item?.value}
                     ref={props.inputRef}
                     style={item.style}
-                    className={`w-1/2 h-full  mx-auto block outline-0 px-[12px] border-solid border border-[#89979b] rounded text[#21313c] transition-[border-color] duration-150 ease-in-out hover:shadow-[#e7eeec_0_0_0_3px]`}
+                    className={`w-full h-24 mx-auto block outline-0 px-[12px] border-solid border border-[#89979b] rounded text[#21313c] transition-[border-color] duration-150 ease-in-out hover:shadow-[#e7eeec_0_0_0_3px]`}
                     onBlur={(e) => {
                       e.stopPropagation();
                       props.handleShowInput(
@@ -76,7 +76,7 @@ function ReportHeader(props) {
                 </div>
               )
               : item.type === "text" || item.type === "date" ? (
-                <h1 style={item?.style} className="h-full px-2 flex items-center justify-center text-center">{item.value}</h1>
+                <h1 style={item?.style} className="h-24 px-2 flex items-center justify-center text-center">{item.value}</h1>
               ) : item.type === "images" ? (
                 <UploadModal
                   data={props.header}

@@ -40,7 +40,7 @@ function Page({ params }) {
             return { ...item };
           }),
         ];
-        console.log(data);
+        console.log(data, 'ready data');
         dispatch(setDataSource([...data]));
       })
       .catch((err) => {
@@ -51,4 +51,3 @@ function Page({ params }) {
 }
 
 export default Page;
-n 

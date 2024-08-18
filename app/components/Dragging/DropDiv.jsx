@@ -104,6 +104,7 @@ function DropDiv(props) {
             id_field: draggedData?.id_field ? draggedData?.id_field : tmp?.insideContent?.id_field ? tmp?.insideContent?.id_field : '',
             [props.section]: {
               style: draggedData?.style,
+              fieldValue: draggedData?.fieldValue ? draggedData?.fieldValue : '',
               text: draggedData?.labelField ? draggedData?.labelField : draggedData?.value ? draggedData?.value : '',
             },
           },
