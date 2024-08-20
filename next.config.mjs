@@ -3,9 +3,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '192.168.1.3',
-        port: '8000'
+        protocol: 'https',
+        hostname: 'api.report.al-sahil.net',
+        port: ''
       },
     ],
   },

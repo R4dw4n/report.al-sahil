@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import { reportServices } from '@/app/api/services/reportServices';
 import Home from '@/app/components/Home/Home'
 import { setContent } from '@/app/redux/slices/content';
