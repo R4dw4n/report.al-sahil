@@ -24,8 +24,8 @@ function MainSection() {
 
 
   useEffect(() => {
-    console.log(header)
-  }, [header]);
+    console.log(content)
+  }, [content]);
   //  console.log(content[0]?.grid[0]?.insideContent?.footer)
 
   //REPORT HEADER STATES
@@ -108,9 +108,6 @@ function MainSection() {
     }
   }, [title]);
 
-  useEffect(() => {
-    console.log(content);
-  }, [content])
 
   const inputRef = useRef(null);
   const footerInputRef = useRef(null);

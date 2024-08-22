@@ -5,9 +5,11 @@ const initialState = {
   reportCols: [],
   selectedTables: [],
   reportName: '',
+  reportStyle:{},
   dataSource: [],
+  dataFunctions:[],
 };
-
+console.log(initialState.dataFunctions)
 export const reportDesign = createSlice({
   name: "report",
   initialState,
@@ -36,8 +38,12 @@ export const reportDesign = createSlice({
     pushRow: (state, action) => {
       state.dataSource.push({ ...action.payload });
     },
+    setDataFunctions :(state , action)=>{
+      state.dataFunctions =[...action.payload]
+      console.log([...action.payload],"from sllllice")
+    }
   }
 });
 
-export const { setReport, addTableCols, pushCol, emptyCols, setSelectedTables, setReportName, setDataSource, pushRow } = reportDesign.actions;
+export const { setReport, addTableCols, setDataFunctions,  pushCol, emptyCols, setSelectedTables, setReportName, setDataSource, pushRow } = reportDesign.actions;
 export default reportDesign.reducer;

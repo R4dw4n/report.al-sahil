@@ -6,7 +6,7 @@ import DropDiv from "../Dragging/DropDiv";
 import { compareArrays } from "./ReportHeader";
 import { useDispatch, useSelector } from "react-redux";
 import ChangeStyleCard from "../ChangeStyleCard";
-import { clearValidOpers, setValidOpers } from "../../redux/slices/main"
+import { clearValidOpers, setValidOpers } from "../../redux/slices/main";
 import { TiDelete } from "react-icons/ti";
 import { deleteItemFromFooter } from "@/app/redux/slices/content";
 import { editItemFromFooter } from "../../redux/slices/content";
