@@ -5,6 +5,6 @@ export const loginService = {
     return axiosInstance().post('/login', data)
   },
   logout: () => {
-    return axiosInstance().post('logout')
+    return axiosInstance().post('/logout')
   },
 }
