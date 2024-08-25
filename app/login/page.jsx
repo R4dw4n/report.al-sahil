@@ -4,6 +4,7 @@ import Login from "../components/Login/Login"
 // import { loginData, loginTail } from "./data"
 import logo from "../../public/logo_al_sahil2.png"
 import { useTranslation } from "react-i18next"
+const inputClassName = "bg-white hover:border-lightgray focus:border-lightgray h-10";
 
 const Page = () => {
   const { t } = useTranslation();
