@@ -1,7 +1,7 @@
 'use client'
 import RoutGuard from "./components/Guard/RoutGuard";
 import "./globals.css";
-import StoreProvider from "./storeProvider";
+import StoreProvider from "./StoreProvider";
 import "./translation/i18n";
 // const inter = Inter({ subsets: ["latin"] });
 

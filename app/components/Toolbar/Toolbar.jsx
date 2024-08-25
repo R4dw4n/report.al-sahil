@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import DraggedDiv from "../Dragging/DraggedDiv";
-import { toolbarItems } from "./ToolbarData";
+import { toolbarItems } from "./toolbarData";
 import { useDispatch, useSelector } from "react-redux";
 import { addGrid } from "@/app/redux/slices/content";
 import { Input } from "antd";
